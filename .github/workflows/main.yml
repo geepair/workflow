@@ -36,4 +36,4 @@ jobs:
           to: 1435978213@qq.com
           subject: Weather Today (${{env.REPORT_DATE}})
           body: file://main.html
-          contentType: text/html
+          content_type: text/html
