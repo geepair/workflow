@@ -27,7 +27,7 @@ jobs:
       - name: Send mailer
         uses: dawidd6/action-send-mail@master
         with:
-          server_address: stmp.ym.163.com
+          server_address: smtp.ym.163.com
           server_port: 994
           username: ${{secrets.MAIL_USER}}
           password: ${{secrets.MAIL_PASSWORD}}
