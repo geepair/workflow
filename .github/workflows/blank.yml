@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: crontab mail
+on:
+  push:
+  schedule:
+    - cron: '0 4 * * *'
+  
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: get weather
+        run: bash ./main.sh
+        
+      - name: Send mailer
+        uses: devellany/send-mail@v1.0.2
+        with:
+          host: stmp.ym.164.com
+          port: 994
+          account: $MAIL_USER
+          password: $MAIL_PASSWORD
+          # Enter sender name.
+          sender: no-reply
+          # Enter sender mail.
+          from: no-reply@beet.tk
+          to: 1435978213@qq.com
+          subject: Weather Today
+          body: file://mian.html
+          contentType: text/plain
