@@ -25,7 +25,7 @@ jobs:
         run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
         
       - name: Send mailer
-        uses: devellany/send-mail@v1.0.2
+        uses: dawidd6/action-send-mail@master
         with:
           host: stmp.ym.163.com
           port: 994
@@ -36,4 +36,4 @@ jobs:
           to: 1435978213@qq.com
           subject: Weather Today (${{env.REPORT_DATE}})
           body: file://main.html
-          contentType: text/plain
+          contentType: text/html
