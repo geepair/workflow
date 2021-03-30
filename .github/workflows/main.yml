@@ -27,8 +27,8 @@ jobs:
       - name: Send mailer
         uses: dawidd6/action-send-mail@master
         with:
-          host: stmp.ym.163.com
-          port: 994
+          server_addr: stmp.ym.163.com
+          server_port: 994
           account: ${{secrets.MAIL_USER}}
           password: ${{secrets.MAIL_PASSWORD}}
           sender: no-reply
