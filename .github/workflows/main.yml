@@ -21,18 +21,19 @@ jobs:
       - name: get weather
         run: bash ./main.sh
         
+      - name: get date
+        run: echo "REPORT_DATE=$(TZ=':Asia/Shanghai' date '+%Y-%m-%d %T')" >> $GITHUB_ENV
+        
       - name: Send mailer
         uses: devellany/send-mail@v1.0.2
         with:
           host: stmp.ym.164.com
           port: 994
-          account: $MAIL_USER
-          password: $MAIL_PASSWORD
-          # Enter sender name.
+          account: ${{secrets.MAIL_USER}}
+          password: ${{secrets.MAIL_PASSWORD}}
           sender: no-reply
-          # Enter sender mail.
-          from: no-reply@beet.tk
+          from: no-reply@beet.tk - github action
           to: 1435978213@qq.com
-          subject: Weather Today
+          subject: Weather Today (${{env.REPORT_DATE}})
           body: file://main.html
           contentType: text/plain
