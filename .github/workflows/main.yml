@@ -34,5 +34,5 @@ jobs:
           from: no-reply@beet.tk
           to: 1435978213@qq.com
           subject: Weather Today
-          body: file://mian.html
+          body: file://main.html
           contentType: text/plain
