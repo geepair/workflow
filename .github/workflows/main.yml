@@ -4,7 +4,7 @@ name: crontab mail
 on:
   push:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: '0 4 * * *'
   
 
   # Allows you to run this workflow manually from the Actions tab
