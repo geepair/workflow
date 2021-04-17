@@ -1,0 +1,33 @@
+name: heroku
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * *"
+  
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: heroku-market
+        run: curl https://springmvc-market.herokuapp.com > heroku-market.html
+
+      - name: Send mailer
+        uses: dawidd6/action-send-mail@master
+        with:
+          server_address: smtp.ym.163.com
+          server_port: 465
+          username: ${{secrets.MAIL_USER}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          from: no-reply
+          to: 1435978213@qq.com
+          subject: Weather Today (${{env.REPORT_DATE}})
+          body: file://heroku-market.html
+          content_type: text/html
