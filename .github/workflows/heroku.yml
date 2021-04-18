@@ -16,4 +16,4 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: heroku-market
-        run: ping springmvc-market.herokuapp.com && curl https://springmvc-market.herokuapp.com > /dev/null
+        run: ping springmvc-market.herokuapp.com
