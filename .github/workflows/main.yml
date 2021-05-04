@@ -4,6 +4,7 @@ name: crontab mail
 on:
   push:
   schedule:
+    # UTC +8:00 12点发送天气信息，预计延迟二十多分钟左右
     - cron: '0 4 * * *'
   
 
