@@ -29,11 +29,14 @@ jobs:
         uses: dawidd6/action-send-mail@master
         with:
           server_address: smtp.ym.163.com
+          secure: true
           server_port: 465
           username: ${{secrets.MAIL_USER}}
           password: ${{secrets.MAIL_PASSWORD}}
           from: no-reply
           to: 1435978213@qq.com
           subject: Weather Today (${{env.REPORT_DATE}})
-          body: file://main.html
+          html_body: file://main.html
+          # convert markdown
           content_type: text/html
+          ignore_cert: true
